@@ -49,7 +49,7 @@ namespace WebAPI.Repositories
             ctx.SaveChanges();
 
             return pacienteBuscado;
-        }
+            }
 
         public List<Consulta> BuscarAgendadas(Guid Id)
             {
@@ -66,6 +66,7 @@ namespace WebAPI.Repositories
             return ctx.Consultas
                  .Include(x => x.Situacao)
                  .Include(x => x.Prioridade)
+                 .Include(x => x.Receita)
                  .Include(x => x.MedicoClinica!.Medico!.IdNavigation)
                  // diferença em dias entre a Data da Consulta e a dataConsulta é igual a 0.
                  .Where(x => x.Paciente!.Id == idPaciente && EF.Functions.DateDiffDay(x.DataConsulta, dataConsulta) == 0)

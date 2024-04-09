@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
         public IActionResult GetById(Guid id)
             {
 
-            return Ok(_medicoRepository.BuscarPorId(id)); ;
+            return Ok(_medicoRepository.BuscarPorId(id)); 
             }
 
         [Authorize]

@@ -14,7 +14,7 @@ namespace WebAPI.Repositories
 
         public Consulta BuscarPorId(Guid id)
             {
-            return ctx.Consultas.Find(id);
+            return ctx.Consultas.Include(x => x.Receita).Include(x => x.MedicoClinica).Include(x => x.Paciente!.IdNavigation).FirstOrDefault(x => x.Id == id)!;
             }
 
         public void Cadastrar(Consulta clinica)
