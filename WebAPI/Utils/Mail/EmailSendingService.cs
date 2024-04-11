@@ -20,6 +20,8 @@
                     Subject = "Bem vindo ao Vital Hub!",
                     Body = GetHtmlContent(userName)
                     };
+
+                await emailService.SendEmailAsync(mailRequest);
                 }
             catch (Exception)
                 {
