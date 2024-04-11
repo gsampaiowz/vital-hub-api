@@ -12,7 +12,6 @@
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-
       "launchBrowser": true,
       "launchUrl": "swagger",
       "applicationUrl": "http://192.168.19.123:4466",

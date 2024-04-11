@@ -10,11 +10,10 @@ namespace WebAPI.Repositories
         public VitalContext ctx = new VitalContext();
         public Clinica BuscarPorId(Guid id)
         {
-
             return ctx.Clinicas
                 .Select(c => new Clinica
                 {
-                    Id = c.Id,
+                    Id = id,
                     NomeFantasia = c.NomeFantasia,
                     Endereco = c.Endereco
                 })
