@@ -30,7 +30,7 @@
                 }
             }
 
-        public async Task SenRecovery(string email, int codigo)
+        public async Task SendRecovery(string email, int codigo)
             {
             try
                 {
@@ -40,6 +40,8 @@
                     Subject = "Bem vindo ao Vital Hub!",
                     Body = GetHtmlContentRecovery(codigo)
                     };
+
+                await emailService.SendEmailAsync(mailRequest);
                 }
             catch (Exception)
                 {
