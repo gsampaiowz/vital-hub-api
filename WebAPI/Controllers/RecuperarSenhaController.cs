@@ -52,31 +52,63 @@ namespace WebAPI.Controllers
         [HttpPost("Validar")]
         public async Task<IActionResult> ValidadeRecoveryCode(string email, int codigo)
             {
+
             try
                 {
-                var user = await _context.Usuarios.FirstOrDefaultAsync(x => x.Email == email);
+                //Entra no Campo usuário e pera para retornar o email
+                var user = await _context.Usuarios.FirstOrDefaultAsync(x => x.Email == email)!;
 
+                //Se o código aleatório enviado para o email, for igual ao CodRecupSenha que está dentro do usuário 
                 if (user == null)
                     {
-                    return NotFound("Usuário não encontrado!");
-                    }
+                    //Retornar Código válido
+                    return NotFound("Código válido");
 
-                if (codigo != user!.CodRecupSenha)
+                    }
+                if (user.CodRecupSenha != codigo)
                     {
-                    return BadRequest("Código errado!");
+                    return BadRequest("Código de recuperação inválido");
                     }
 
                 user.CodRecupSenha = null;
 
                 await _context.SaveChangesAsync();
 
-                return Ok("Código correto!");
+                return Ok("Código de recuperação válido");
+
 
                 }
             catch (Exception ex)
                 {
+
                 return BadRequest(ex.Message);
                 }
+
+            //try
+            //    {
+            //    var user = await _context.Usuarios.FirstOrDefaultAsync(x => x.Email == email);
+
+            //    if (user == null)
+            //        {
+            //        return NotFound("Usuário não encontrado!");
+            //        }
+
+            //    if (codigo != user!.CodRecupSenha)
+            //        {
+            //        return BadRequest("Código errado!");
+            //        }
+
+            //    user.CodRecupSenha = null;
+
+            //    await _context.SaveChangesAsync();
+
+            //    return Ok("Código correto!");
+
+            //    }
+            //catch (Exception ex)
+            //    {
+            //    return BadRequest(ex.Message);
+            //    }
             }
         }
     }

@@ -6,7 +6,7 @@ namespace WebAPI.Repositories
 {
     public class ExameRepository : IExameRepository
     {
-        public VitalContext ctx = new VitalContext();
+        public VitalContext ctx = new();
 
         public List<Exame> BuscarPorIdConsulta(Guid idConsulta)
         {
