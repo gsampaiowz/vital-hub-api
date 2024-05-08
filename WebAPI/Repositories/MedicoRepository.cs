@@ -8,7 +8,7 @@ using WebAPI.ViewModels;
 
 namespace WebAPI.Repositories
 {
-    
+
     public class MedicoRepository : IMedicoRepository
     {
         VitalContext ctx = new VitalContext();
@@ -20,6 +20,14 @@ namespace WebAPI.Repositories
                 Medico medicoBuscado = ctx.Medicos
                     .Include(x => x.Endereco)
                     .FirstOrDefault(x => x.Id == Id)!;
+
+                Medico Medicos = ctx.Medicos
+                    .Include(x => x.Endereco)
+                    .Include(x => x.IdNavigation)
+                    .FirstOrDefault(x => x.Id == Id)!;
+
+
+
 
 
                 if (medicoBuscado == null) return null!;
@@ -44,6 +52,9 @@ namespace WebAPI.Repositories
 
                 if (medico.Cidade != null)
                     medicoBuscado.Endereco!.Cidade = medico.Cidade;
+
+                if (medico.Nome != null)
+                    medicoBuscado.IdNavigation!.Nome = medico.Nome;
 
                 ctx.Medicos.Update(medicoBuscado);
                 ctx.SaveChanges();

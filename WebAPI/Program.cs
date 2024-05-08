@@ -32,7 +32,7 @@ builder.Services.AddAuthentication(options =>
 .AddJwtBearer("JwtBearer", options =>
 {
     options.TokenValidationParameters = new TokenValidationParameters
-        {
+    {
         //valida quem está solicitando
         ValidateIssuer = true,
 
@@ -53,7 +53,7 @@ builder.Services.AddAuthentication(options =>
 
         //nome do audience (para onde está indo)
         ValidAudience = "Vital-WebAPI"
-        };
+    };
 });
 
 
@@ -66,28 +66,28 @@ builder.Services.AddSwaggerGen(options =>
 {
     //Adiciona informações sobre a API no Swagger
     options.SwaggerDoc("v1", new OpenApiInfo
-        {
+    {
         Version = "v1",
         Title = "API Vital",
         Description = "Backend API",
         Contact = new OpenApiContact
-            {
+        {
             Name = "Senai Informática"
-            }
-        });
+        }
+    });
 
 
 
     //Usando a autenticaçao no Swagger
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-        {
+    {
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
         Description = "Value: Bearer TokenJWT ",
-        });
+    });
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -135,10 +135,10 @@ var app = builder.Build();
 
 //Habilite o middleware para atender ao documento JSON gerado e à interface do usuário do Swagger
 if (app.Environment.IsDevelopment())
-    {
+{
     app.UseSwagger();
     app.UseSwaggerUI();
-    }
+}
 
 //Para atender à interface do usuário do Swagger na raiz do aplicativo
 app.UseSwaggerUI(options =>
