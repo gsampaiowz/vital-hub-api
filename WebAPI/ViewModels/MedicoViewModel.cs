@@ -2,9 +2,9 @@
 using System.Text.Json.Serialization;
 
 namespace WebAPI.ViewModels
-    {
+{
     public class MedicoViewModel
-        {
+    {
         public string? Nome { get; set; }
 
         public string? Email { get; set; }
@@ -24,10 +24,11 @@ namespace WebAPI.ViewModels
         public Guid? EspecialidadeId { get; set; }
 
         public string? Crm { get; set; }
+
+        public Guid? IdTipoUsuario { get; set; }
+
         [NotMapped]
         [JsonIgnore]
         public IFormFile? Arquivo { get; set; }
-
-        public Guid? IdTipoUsuario { get; set; }
-        }
     }
+}

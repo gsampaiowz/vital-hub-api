@@ -19,8 +19,16 @@ namespace WebAPI.Repositories
                 .Include(x => x.Endereco)
                 .FirstOrDefault(x => x.Id == Id)!;
 
+                Paciente Pacientes = ctx.Pacientes
+                    .Include(x => x.Endereco)
+                    .Include(x => x.IdNavigation)
+                    .FirstOrDefault(x => x.Id == Id)!;
+
                 //if (paciente.Foto != null)
                 //    pacienteBuscado!.IdNavigation.Foto = paciente.Foto;
+
+                if (paciente.Nome != null)
+                    pacienteBuscado!.IdNavigation.Nome = paciente.Nome;
 
                 if (paciente.DataNascimento != null)
                     pacienteBuscado!.DataNascimento = paciente.DataNascimento;
@@ -30,6 +38,9 @@ namespace WebAPI.Repositories
 
                 if (paciente.Logradouro != null)
                     pacienteBuscado!.Endereco!.Logradouro = paciente.Logradouro;
+
+                if (paciente.Rg != null)
+                    pacienteBuscado!.Rg = paciente.Rg;
 
                 if (paciente.Numero != null)
                     pacienteBuscado!.Endereco!.Numero = paciente.Numero;
