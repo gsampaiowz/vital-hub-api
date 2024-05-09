@@ -26,10 +26,6 @@ namespace WebAPI.Repositories
                     .Include(x => x.IdNavigation)
                     .FirstOrDefault(x => x.Id == Id)!;
 
-
-
-
-
                 if (medicoBuscado == null) return null!;
 
                 //if (medico.Foto != null)
