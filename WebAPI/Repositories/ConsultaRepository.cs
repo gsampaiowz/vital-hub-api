@@ -130,7 +130,7 @@ namespace WebAPI.Repositories
 
         public List<Consulta> ListarTodos()
         {
-            return ctx.Consultas.ToList();
+            return ctx.Consultas.Include(x => x.Situacao).ToList();
         }
     }
 }
