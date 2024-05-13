@@ -7,5 +7,7 @@ namespace WebAPI.Interfaces
         public void Cadastrar(Exame exame);
 
         public List<Exame> BuscarPorIdConsulta(Guid idConsulta);
+
+        public void Delete(Guid id);
     }
 }
