@@ -40,7 +40,7 @@ namespace WebAPI.Utils.BlobStorage
                 {
                     //URL da imagem padrão
                     //Retorna a uri de uma imagem padrão caso nenhum arquivo seja enviado
-                    return "Imagem Padrão";
+                    return "https://blobvitalhubg7t.blob.core.windows.net/containervitalhubg7t/profilePattern.png";
                 }
             }
             catch (Exception)
